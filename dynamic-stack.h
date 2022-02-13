@@ -41,7 +41,7 @@ public:
     // Parametric constructor of the class DynamicStack. It allocates the required
     // memory space for the stack of the given capacity. The function
     // appropriately initializes the fields of the created empty stack.
-    DynamicStack(unsigned int capacity);
+    explicit DynamicStack(unsigned int capacity);
 
     // Destructor of the class DynamicStack. It deallocates the memory space
     // allocated for the stack.
