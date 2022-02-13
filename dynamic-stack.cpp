@@ -16,8 +16,8 @@ DynamicStack::DynamicStack()
 DynamicStack::DynamicStack(unsigned int capacity)
 {
     int new_capacity = (int)capacity;
-    capacity_ = new_capacity;
-    init_capacity_ = capacity_;
+    init_capacity_ = new_capacity;
+    capacity_ = init_capacity_;
     items_ = new StackItem [capacity_];
     size_ = 0;
 }
@@ -30,9 +30,11 @@ DynamicStack::~DynamicStack()
 
 bool DynamicStack::empty() const
 {
-    if (size_ == 0) return true;
+    if (size_ == 0)
+        return true;
 
-    else return false;
+    else
+        return false;
 }
 
 int DynamicStack::size() const
@@ -42,14 +44,14 @@ int DynamicStack::size() const
 
 void DynamicStack::push(StackItem value)
 {
-    if (size_ >= capacity_)
+    if (size_ < capacity_)
     {
-        capacity_ = (capacity_ * 2);
         items_[size_] = value;
         size_++;
     }
     else
     {
+        capacity_ = (capacity_ * 2);
         items_[size_] = value;
         size_++;
     }
@@ -57,28 +59,38 @@ void DynamicStack::push(StackItem value)
 
 DynamicStack::StackItem DynamicStack::pop()
 {
-    if (size_ == 0) return EMPTY_STACK;
+    if (empty())
+        return EMPTY_STACK;
 
     else
     {
         int top = items_[size_ - 1];
 
-        if (size_ <= (capacity_ / 4))
-        {
-            capacity_ = (capacity_ / 2);
-        }
-
         size_ --;
 
+        if ((capacity_ / 4) >= size_ && (capacity_ / 2) >= init_capacity_)
+        {
+            capacity_ = (capacity_ / 2);
+            int* items_temp = new int[capacity_];
+            for (int i = 0; i < size_; i++)
+            {
+                items_temp[i] = items_[i];
+            }
+            delete[] items_;
+            items_ = items_temp;
+
+        }
         return top;
     }
 }
 
 DynamicStack::StackItem DynamicStack::peek() const
 {
-    if (size_ == 0 || capacity_ < size_) return EMPTY_STACK;
-    else if (size_ == 1) return items_[0];
-    else return items_[size_ - 1];
+    if (size_ == 0 || capacity_ < size_)
+        return EMPTY_STACK;
+
+    else
+        return items_[size_ - 1];
 }
 
 void DynamicStack::print() const
