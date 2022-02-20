@@ -31,7 +31,7 @@ CircularQueue::~CircularQueue()
 
 bool CircularQueue::empty() const
 {
-    if (size_ == 0 || head_ == - 1)
+    if (size_ == 0)
         return true;
 
     else
@@ -40,7 +40,7 @@ bool CircularQueue::empty() const
 
 bool CircularQueue::full() const
 {
-    if (size_ == capacity_ || ((tail_ + 1) % capacity_) == head_)
+    if (size_ == capacity_)
         return true;
 
     else
@@ -55,7 +55,7 @@ int CircularQueue::size() const
 bool CircularQueue::enqueue(QueueItem value)
 {
     // if queue is full
-    if (size_ >= capacity_)
+    if (full())
         return false;
 
     else
@@ -76,7 +76,7 @@ bool CircularQueue::enqueue(QueueItem value)
 
 CircularQueue::QueueItem CircularQueue::dequeue()
 {
-    if (size_ <= 0)
+    if (empty())
         return EMPTY_QUEUE;
 
     else
