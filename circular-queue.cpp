@@ -31,6 +31,7 @@ CircularQueue::~CircularQueue()
 
 bool CircularQueue::empty() const
 {
+    // if no elements in queue
     if (size_ == 0)
         return true;
 
@@ -40,6 +41,7 @@ bool CircularQueue::empty() const
 
 bool CircularQueue::full() const
 {
+    // if queue cannot hold anymore elements
     if (size_ == capacity_)
         return true;
 
