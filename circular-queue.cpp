@@ -55,7 +55,7 @@ int CircularQueue::size() const
 bool CircularQueue::enqueue(QueueItem value)
 {
     // if queue is full
-    if (full())
+    if (size_ >= capacity_)
         return false;
 
     else
@@ -76,7 +76,7 @@ bool CircularQueue::enqueue(QueueItem value)
 
 CircularQueue::QueueItem CircularQueue::dequeue()
 {
-    if (empty())
+    if (size_ <= 0)
         return EMPTY_QUEUE;
 
     else
