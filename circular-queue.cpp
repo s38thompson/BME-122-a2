@@ -63,7 +63,8 @@ bool CircularQueue::enqueue(QueueItem value)
         // inserting first element of list
         if (head_ == - 1)
         {
-            head_ = tail_ = 0;
+            head_ = 0;
+            tail_ = 0;
         }
 
         items_[tail_] = value; // insert element
@@ -86,8 +87,10 @@ CircularQueue::QueueItem CircularQueue::dequeue()
 
         if (head_ == tail_)
         {
-            head_ = tail_ = - 1;
+            head_ = - 1;
+            tail_ = - 1;
         }
+
         size_--;
         return front;
     }
