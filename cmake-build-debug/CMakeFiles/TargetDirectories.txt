@@ -1,0 +1,3 @@
+/Users/sydneythompson/CLionProjects/s38thomp/s38thomp/s38thomp/s38thomp/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/sydneythompson/CLionProjects/s38thomp/s38thomp/s38thomp/s38thomp/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/sydneythompson/CLionProjects/s38thomp/s38thomp/s38thomp/s38thomp/cmake-build-debug/CMakeFiles/BME122-a2.dir
